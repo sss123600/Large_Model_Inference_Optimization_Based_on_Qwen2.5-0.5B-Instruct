@@ -1,0 +1,25 @@
+
+========================================================================
+INFERENCE OPTIMIZATION BENCHMARK RESULT
+========================================================================
+Score profile: vllm_reference_teacher_v7_component_tiered (full score speedup bar=1.60x)
+Model: /root/autodl-tmp/toy/qwen2.5-0.5b-instruct
+Runtime: host=autodl-container-7c04469055-2ecf86b8  gpu=NVIDIA GeForce RTX 2080 Ti  CUDA_VISIBLE_DEVICES=unset
+Config: device=cuda  dtype=float16  attn=sdpa  seed=0  local_files_only=True
+Workload: suites=long_context,decode_throughput,ttft_prefill,serving_schedule,mixed_serving,decode_cache_stress  limit=None  baseline=/root/autodl-tmp/toy/student_release/data/public_baseline_summary.json
+------------------------------------------------------------------------
+Long Context Correctness   28.50 / 30   partial=0.950  exact=0.933
+Decode TPS                 22.77 / 25   tps=150.3  speedup=0.67x  valid=1.000
+TTFT / Prefill Latency     17.01 / 20   avg=0.086s(0.41x)  p95=0.241s(0.26x)  buckets=4
+TTFT Breakdown             bucket_avg=10.04/12  bucket_p95= 4.97/6  quality=2.00/2  valid=1.000
+Serving / Scheduling       12.39 / 15   tps=227.3  speedup=0.53x  p95=4.567s  iface=serve_requests
+Runtime Robustness         10.00 / 10   runtime=1.000  valid=0.933
+Diagnostics                not scored   batch_scale=3.29x  mixed_tps=60.8(0.60x)  prefix_shared=0.69x  copy_prefix=0.062
+Cache/Memory Diagnostic    not scored   cache_tps=154.6(1.35x)  growth=4.70 MB/100tok  extra=809 MB  cache_metric=peak_extra_fallback  cache_peak_saving=-512.5%
+Realism Guard: OK
+Component Tiering         raw=90.68  before_cap=90.68  full_bar=1.60x
+------------------------------------------------------------------------
+FINAL SCORE: 90.68 / 100   CAP: 100
+SERVER/GPU: host=autodl-container-7c04469055-2ecf86b8 | gpu=NVIDIA GeForce RTX 2080 Ti | CUDA_VISIBLE_DEVICES=unset
+RUN CONFIG: model=/root/autodl-tmp/toy/qwen2.5-0.5b-instruct | dtype=float16 | attn=sdpa | seed=0 | suites=long_context,decode_throughput,ttft_prefill,serving_schedule,mixed_serving,decode_cache_stress | limit=None
+========================================================================

@@ -1,0 +1,25 @@
+
+========================================================================
+INFERENCE OPTIMIZATION BENCHMARK RESULT
+========================================================================
+Score profile: vllm_reference_teacher_v7_component_tiered (full score speedup bar=1.60x)
+Model: D:\local_model\qwen2.5-0.5b-instruct
+Runtime: host=N/A  gpu=NVIDIA GeForce RTX 3060 Laptop GPU  CUDA_VISIBLE_DEVICES=unset
+Config: device=cuda  dtype=float16  attn=sdpa  seed=0  local_files_only=True
+Workload: suites=long_context,decode_throughput,ttft_prefill,serving_schedule,mixed_serving,decode_cache_stress  limit=None  baseline=D:\ecnu_ss\student_release-sss\student_release\data\public_baseline_summary.json
+------------------------------------------------------------------------
+Long Context Correctness   28.50 / 30   partial=0.950  exact=0.933
+Decode TPS                  0.00 / 25   tps=42.5  speedup=0.19x  valid=0.000
+TTFT / Prefill Latency     13.70 / 20   avg=0.272s(0.13x)  p95=0.826s(0.08x)  buckets=4
+TTFT Breakdown             bucket_avg= 7.85/12  bucket_p95= 3.86/6  quality=2.00/2  valid=1.000
+Serving / Scheduling        0.00 / 15   tps=25.4  speedup=0.06x  p95=13.472s  iface=serve_requests
+Runtime Robustness         10.00 / 10   runtime=1.000  valid=0.378
+Diagnostics                not scored   batch_scale=1.31x  mixed_tps=25.2(0.25x)  prefix_shared=0.58x  copy_prefix=0.087
+Cache/Memory Diagnostic    not scored   cache_tps=37.2(0.32x)  growth=0.00 MB/100tok  extra=1390 MB  cache_metric=peak_extra_fallback  cache_peak_saving=-492.6%
+Realism Guard: OK
+Component Tiering         raw=52.20  before_cap=52.20  full_bar=1.60x
+------------------------------------------------------------------------
+FINAL SCORE: 52.20 / 100   CAP: 100
+SERVER/GPU: host=N/A | gpu=NVIDIA GeForce RTX 3060 Laptop GPU | CUDA_VISIBLE_DEVICES=unset
+RUN CONFIG: model=D:\local_model\qwen2.5-0.5b-instruct | dtype=float16 | attn=sdpa | seed=0 | suites=long_context,decode_throughput,ttft_prefill,serving_schedule,mixed_serving,decode_cache_stress | limit=None
+========================================================================

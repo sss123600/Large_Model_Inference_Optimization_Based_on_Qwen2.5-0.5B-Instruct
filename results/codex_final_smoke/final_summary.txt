@@ -1,0 +1,25 @@
+
+========================================================================
+INFERENCE OPTIMIZATION BENCHMARK RESULT
+========================================================================
+Score profile: vllm_reference_teacher_v7_component_tiered (full score speedup bar=1.60x)
+Model: D:\local_model\qwen2.5-0.5b-instruct
+Runtime: host=N/A  gpu=NVIDIA GeForce RTX 3060 Laptop GPU  CUDA_VISIBLE_DEVICES=unset
+Config: device=cuda  dtype=float16  attn=sdpa  seed=0  local_files_only=True
+Workload: suites=long_context,decode_throughput,ttft_prefill,serving_schedule,mixed_serving,decode_cache_stress  limit=1  baseline=D:\ecnu_ss\student_release-sss\student_release\data\public_baseline_summary.json
+------------------------------------------------------------------------
+Long Context Correctness   30.00 / 30   partial=1.000  exact=1.000
+Decode TPS                 14.70 / 25   tps=28.2  speedup=0.13x  valid=1.000
+TTFT / Prefill Latency     17.67 / 20   avg=0.041s(0.87x)  p95=0.041s(1.54x)  buckets=1
+TTFT Breakdown             bucket_avg=10.44/12  bucket_p95= 5.24/6  quality=2.00/2  valid=1.000
+Serving / Scheduling        8.05 / 15   tps=27.6  speedup=0.06x  p95=3.364s  iface=serve_requests
+Runtime Robustness         10.00 / 10   runtime=1.000  valid=1.000
+Diagnostics                not scored   batch_scale=1.00x  mixed_tps=25.6(0.25x)  prefix_shared=0.00x  copy_prefix=0.130
+Cache/Memory Diagnostic    not scored   cache_tps=27.2(0.24x)  growth=0.00 MB/100tok  extra=580 MB  cache_metric=peak_extra_fallback  cache_peak_saving=-399.4%
+Realism Guard: OK
+Component Tiering         raw=80.42  before_cap=80.42  full_bar=1.60x
+------------------------------------------------------------------------
+FINAL SCORE: 80.42 / 100   CAP: 100
+SERVER/GPU: host=N/A | gpu=NVIDIA GeForce RTX 3060 Laptop GPU | CUDA_VISIBLE_DEVICES=unset
+RUN CONFIG: model=D:\local_model\qwen2.5-0.5b-instruct | dtype=float16 | attn=sdpa | seed=0 | suites=long_context,decode_throughput,ttft_prefill,serving_schedule,mixed_serving,decode_cache_stress | limit=1
+========================================================================
